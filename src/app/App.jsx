@@ -21,7 +21,10 @@ class App extends Component {
     return (
       <div className={styles.app}>
         <h1>MoviesConnected</h1>
-        <MovieSelector onSelectClick={movie => dispatch(selectMovie(movie))} selectedMovie={selectedMovie} />
+        <MovieSelector onSelectClick={movie => {
+            dispatch(selectMovie(movie));
+            dispatch(fetchMovie(movie));
+          }} selectedMovie={selectedMovie} />
         <MovieData selectedMovieData={selectedMovieData} />
       </div>
     )
