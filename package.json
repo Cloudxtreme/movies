@@ -1,0 +1,24 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "A simple movie management tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smockle/movies.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "movies"
+  ],
+  "author": "Clay Miller <clay@smockle.com> (http://www.smockle.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smockle/movies/issues"
+  },
+  "homepage": "https://github.com/smockle/movies#readme"
+}
