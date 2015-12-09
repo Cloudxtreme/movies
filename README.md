@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/smockle/movies.svg)](https://travis-ci.org/smockle/movies)
+
 # Movies
 
 A simple movie management tool.
