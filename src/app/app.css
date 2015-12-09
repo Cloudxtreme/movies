@@ -8,7 +8,10 @@
   --color-blue-1: #abe7d8;
   --color-blue-2: #84dcc6;
   --color-blue-3: #4DAAA7;
-  --color-orange: #FF8F12;
+  --color-orange-0: #FFE7C6;
+  --color-orange-1: #FFA726;
+  --color-orange-2: #FF8F12;
+  --color-orange-3: #de7500;
   --color-violet: #193A54;
   --font-sans: 'Helvetica Neue';
 }
@@ -157,13 +160,12 @@ textarea {
 }
 input:focus,
 textarea:focus {
-  background-color: var(--color-blue-0);
-  border-bottom-color: var(--color-blue-2);
+  background-color: var(--color-orange-0);
 }
 input:focus::selection,
 textarea:focus::selection {
   /* Compensate for dark backgrounds */
-  background-color: var(--color-blue-1);
+  background-color: var(--color-orange-1);
 }
 textarea {
   padding: 1rem;
@@ -175,16 +177,16 @@ textarea {
  */
 
 a {
-  color: var(--color-blue-2);
+  color: var(--color-orange-2);
 }
 a:hover {
-  color: var(--color-blue-1);
+  color: var(--color-orange-1);
 }
 button,
 input[type=button],
 input[type=reset],
 input[type=submit] {
-  background: var(--color-blue-2);
+  background: var(--color-orange-2);
   border-radius: 0;
   color: white;
   cursor: pointer;
@@ -202,7 +204,13 @@ button:hover,
 input[type=button]:hover,
 input[type=reset]:hover,
 input[type=submit]:hover {
-  background: var(--color-blue-1);
+  background: var(--color-orange-1);
+}
+button:active,
+input[type=button]:active,
+input[type=reset]:active,
+input[type=submit]:active {
+  background: var(--color-orange-3);
 }
 
 /*
