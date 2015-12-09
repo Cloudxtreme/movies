@@ -19,8 +19,8 @@ class App extends Component {
   render() {
     const { dispatch, selectedMovie, selectedMovieData } = this.props;
     return (
-      <div>
-        <h1>Hello world!</h1>
+      <div className={styles.app}>
+        <h1>MoviesConnected</h1>
         <MovieSelector onSelectClick={movie => dispatch(selectMovie(movie))} selectedMovie={selectedMovie} />
         <MovieData selectedMovieData={selectedMovieData} />
       </div>
