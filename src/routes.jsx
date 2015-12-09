@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Router } from 'react-router';
 import createHistory from 'history/lib/createBrowserHistory';
 import { Provider } from 'react-redux';
+import store from './app/store';
 import App from './app/App';
 
 const routes = [
@@ -15,6 +16,8 @@ const routes = [
 ];
 
 render(
-  <Router history={createHistory()} routes={routes} />,
+  <Provider store={store}>
+    <Router history={createHistory()} routes={routes} />
+  </Provider>,
   document.getElementById("app")
 );
