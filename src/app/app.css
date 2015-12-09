@@ -18,7 +18,7 @@
  */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: sans-serif;
+  font-family: var(--font-sans);
   font-weight: 700;
   line-height: 125%;
   margin-top: 0;
@@ -151,7 +151,7 @@ textarea {
   background-color: var(--color-white-0);
   border: none;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: var(--font-sans);
   font-size: 1.35rem;
   line-height: normal;
   outline: none;
@@ -244,7 +244,7 @@ input[type=submit]:hover {
  body {
    color: var(--color-gray-2);
    display: block;
-   font-family: serif;
+   font-family: var(--font-sans);
    font-kerning: normal;
    font-variant-numeric: oldstyle-nums diagonal-fractions;
    font-weight: 400;
@@ -252,9 +252,6 @@ input[type=submit]:hover {
    font-size: 1.5rem;
    line-height: 170%;
 
- }
- body.serif-loaded {
-   font-family: var(--font-serif);
  }
  ::selection {
    background-color: var(--color-blue-0);
