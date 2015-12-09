@@ -124,14 +124,6 @@ pre, code, kbd, samp {
   font-size: 1.2rem;
   line-height: 130%;
 }
-.monospace-loaded pre,
-.monospace-loaded code,
-.monospace-loaded kbd,
-.monospace-loaded samp {
-  font-family: var(--font-monospace);
-  font-size: 1.1rem;
-  line-height: 140%;
-}
 
 /*
  * FORMS & INPUTS
