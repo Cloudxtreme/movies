@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { selectMovie, fetchMovie } from './actions';
 import MovieSelector from './MovieSelector';
 import MovieData from './MovieData';
+import Playlist from './Playlist';
 import styles from './app.css';
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
     }
   }
   render() {
-    const { dispatch, selectedMovie, selectedMovieData } = this.props;
+    const { dispatch, selectedMovie, selectedMovieData, playlist } = this.props;
     return (
       <div className={styles.app}>
         <h1>MoviesConnected</h1>
@@ -26,6 +27,7 @@ class App extends Component {
             dispatch(fetchMovie(movie));
           }} selectedMovie={selectedMovie} />
         <MovieData selectedMovieData={selectedMovieData} />
+        <Playlist playlist={playlist} />
       </div>
     )
   }
@@ -33,13 +35,15 @@ class App extends Component {
 
 App.PropTypes = {
   selectedMovie: PropTypes.string.isRequired,
-  selectedMovieData: PropTypes.string
+  selectedMovieData: PropTypes.string,
+  playlist: PropTypes.array
 };
 
 function select(state) {
   return {
     selectedMovie: state.selectedMovie,
-    selectedMovieData: JSON.stringify(state.selectedMovieData)
+    selectedMovieData: JSON.stringify(state.selectedMovieData),
+    playlist: state.playlist
   };
 }
 

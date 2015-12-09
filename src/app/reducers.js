@@ -1,4 +1,4 @@
-import { SELECT_MOVIE, REQUEST_MOVIE, RECEIVE_MOVIE, selectMovie } from './actions';
+import { SELECT_MOVIE, REQUEST_MOVIE, RECEIVE_MOVIE, SAVE_MOVIE, selectMovie } from './actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
@@ -24,7 +24,8 @@ const initialState = {
       "imdbID": "tt0469494",
       "Type": "movie",
       "Response": "True"
-    }
+    },
+    playlist: []
 };
 
 function selectedMovie(state = initialState.selectedMovie, action) {
@@ -46,8 +47,18 @@ function selectedMovieData(state = initialState.selectedMovieData, action) {
   }
 }
 
+function playlist(state = initialState.playlist, action) {
+  switch(action.type) {
+  case SAVE_MOVIE:
+    return [...state, action.payload.movie];
+  default:
+    return state;
+  }
+}
+
 const rootReducer = combineReducers({
   selectedMovie,
-  selectedMovieData
+  selectedMovieData,
+  playlist
 });
 export default rootReducer;

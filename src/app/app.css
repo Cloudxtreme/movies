@@ -120,7 +120,7 @@ pre {
 pre::selection,
 pre code::selection {
   /* Compensate for dark backgrounds */
-  background-color: var(--color-blue-1);
+  background-color: var(--color-orange-1);
 }
 pre, code, kbd, samp {
   font-family: monospace;
@@ -254,7 +254,7 @@ input[type=submit]:active {
 
  }
  ::selection {
-   background-color: var(--color-blue-0);
+   background-color: var(--color-orange-0);
  }
 
 /*

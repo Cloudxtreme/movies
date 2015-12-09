@@ -40,7 +40,7 @@ export function fetchMovie(movie) {
 }
 export function saveMovie(movie) {
   return {
-    type: RECEIVE_MOVIE,
+    type: SAVE_MOVIE,
     payload: { movie: movie },
     error: false
   }
