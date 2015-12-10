@@ -36,7 +36,10 @@ function movies(state = initialState.movies, action) {
     return state;
   case RECEIVE:
     if (!action.payload.json['Search']) return [];
-    return [...action.payload.json['Search'].map(movie => Object.assign({}, movie, { visible: true }))];
+    return [...action.payload.json['Search'].map(movie => {
+      const poster = movie['Poster'] && movie['Poster'].match(/^https?/) ? movie['Poster'] : 'fallback.png';
+      return Object.assign({}, movie, { Poster: poster, visible: true })
+    })];
   case SAVE:
     console.log(action.payload.index, action.payload.movie);
     return [...state.slice(0, action.payload.index),
