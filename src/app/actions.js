@@ -31,10 +31,10 @@ export function receive(movie, json) {
     error: false
   }
 }
-export function save(movie) {
+export function save(index, movie) {
   return {
     type: SAVE,
-    payload: { movie: movie },
+    payload: { index: index, movie: movie },
     error: false
   }
 }
@@ -43,7 +43,7 @@ export function saveAtIndex(index) {
     const movies = getState().movies;
     const movie = movies[index];
     if (movie) {
-      dispatch(save(movie));
+      dispatch(save(index, movie));
       return movie;
     }
     throw new Error('Movie not found.');

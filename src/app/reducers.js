@@ -36,9 +36,12 @@ function movies(state = initialState.movies, action) {
     return state;
   case RECEIVE:
     if (!action.payload.json['Search']) return [];
-    const foo = [...action.payload.json['Search'].map(movie => Object.assign({}, movie, { visible: true }))];
-    console.log(foo);
-    return foo;
+    return [...action.payload.json['Search'].map(movie => Object.assign({}, movie, { visible: true }))];
+  case SAVE:
+    console.log(action.payload.index, action.payload.movie);
+    return [...state.slice(0, action.payload.index),
+            Object.assign({}, action.payload.movie, { saved: true }),
+            ...state.slice(action.payload.index + 1)];
   default:
     return state;
   }

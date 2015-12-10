@@ -13,7 +13,8 @@ export default class MovieList extends Component {
         <ul className={styles.list}>
           {movies.map((movie, index) =>
             <li className={styles.movie} key={index}>
-              <button className={styles.save} onClick={e => this.handleSave(index)}>+</button>
+              {movie.saved && <button className={styles.saved}>★</button>}
+              {!movie.saved && <button className={styles.save} onClick={e => this.handleSave(index)}>+</button>}
               <img alt={movie['Title']} src={movie['Poster']} />
               <div className={styles.copy}>
                 <span className={styles.title}>{movie['Title']}</span>

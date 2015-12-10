@@ -46,6 +46,19 @@
   top: 1rem;
   width: 2.6rem;
 }
+.saved {
+  composes: shadow;
+  composes: save;
+  background-color: var(--color-blue-3);
+  font-size: 1.4rem;
+  padding: .3rem 0 .25rem 0;
+}
+.saved:hover {
+  background-color: var(--color-blue-3);
+}
+.saved:active {
+  background-color: var(--color-blue-3);
+}
 .copy {
   padding: 1.5rem;
 }
