@@ -259,18 +259,14 @@ input[type=submit]:active {
   position: relative;
   z-index: 1;
 }
-.app section {
-  margin-top: 2.5rem;
-}
-.selectedMovie {
-  color: var(--color-blue-3);
-}
-.selectedInput {
+.app section { margin-top: 2.5rem; }
+.query { color: var(--color-blue-3); }
+.input {
   display: block;
   width: 100%;
 }
 @media (min-width: 35em) {
-  .selectedInput {
+  .input {
     display: inline-block;
     width: auto;
   }
