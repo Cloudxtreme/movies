@@ -51,7 +51,7 @@ function selectedMovieData(state = initialState.selectedMovieData, action) {
   switch(action.type) {
   case RECEIVE_MOVIE:
   case REQUEST_MOVIE:
-    return Object.assign({}, state, action.payload.json);
+    return Object.assign({}, action.payload.json);
   default:
     return state;
   }
