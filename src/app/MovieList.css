@@ -16,6 +16,25 @@
   --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.movieList {
-  background-color: var(--color-white-1);
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+}
+.movie {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1rem;
+  width: calc(33.33% - 2rem);
+}
+.copy {
+  padding: 1.5rem;
+}
+.year {
+  color: var(--color-gray-1);
 }

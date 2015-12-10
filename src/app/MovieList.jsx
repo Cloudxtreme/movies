@@ -5,10 +5,18 @@ export default class MovieList extends Component {
   render() {
     const { movies } = this.props;
     return (
-      <section className={styles.movieList}>
+      <section>
         {movies.length > 0 && <h2>Search Results</h2>}
-        <ul>
-          {movies.map((movie, i) => <li key={i}>{movie['Title']}</li>)}
+        <ul className={styles.list}>
+          {movies.map((movie, i) =>
+            <li className={styles.movie} key={i}>
+              <img alt={movie['Title']} src={movie['Poster']} />
+              <div className={styles.copy}>
+                <span className={styles.title}>{movie['Title']}</span>
+                {' '}
+                <span className={styles.year}>({movie['Year']})</span>
+              </div>
+            </li>)}
         </ul>
       </section>
     )
