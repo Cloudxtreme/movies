@@ -1,23 +1,27 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { selectMovie, deselectMovie, fetchMovie, saveMovie } from './actions';
-import MovieSelector from './MovieSelector';
-import MovieData from './MovieData';
+import { search, get, save } from './actions';
+
+import Searchbar from './Searchbar';
+import MovieList from './MovieList';
 import Library from './Library';
 import styles from './app.css';
 
 class App extends Component {
   componentDidMount() {
-    const { dispatch, selectedMovie } = this.props;
-    dispatch(fetchMovie(selectedMovie));
+    const { dispatch, query } = this.props;
+    dispatch(get(query));
   }
   render() {
-    const { dispatch, selectedMovie, uiSelectedMovie, selectedMovieData, library } = this.props;
+    const { dispatch, firstMovie, library, movies, query } = this.props;
     return (
       <div className={styles.app}>
-        <h1>MoviesConnected</h1>
-        <MovieSelector onChange={movie => dispatch(selectMovie(movie))} onSelectClick={movie => { dispatch(deselectMovie(movie)); dispatch(fetchMovie(movie)); }} onAddClick={movie => dispatch(saveMovie(movie))} selectedMovie={selectedMovie} uiSelectedMovie={uiSelectedMovie} />
-        <MovieData selectedMovieData={selectedMovieData} />
+        <h1>Movie Management<br /><strong>Simplified</strong></h1>
+        <Searchbar onChange={movie => dispatch(search(movie))}
+                   onGet={movie => dispatch(get(movie))}
+                   onSave={movie => dispatch(save(movie))}
+                   query={query} />
+        <MovieList movies={movies} />
         <Library library={library} />
       </div>
     )
@@ -25,18 +29,19 @@ class App extends Component {
 }
 
 App.PropTypes = {
-  selectedMovie: PropTypes.string.isRequired,
-  selectedMovieData: PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
+  firstMovie: PropTypes.object,
   library: PropTypes.array,
-  uiSelectedMovie: PropTypes.string
+  movies: PropTypes.array,
+  query: PropTypes.string.isRequired
 };
 
 function select(state) {
   return {
-    selectedMovie: state.selectedMovie,
-    selectedMovieData: JSON.stringify(state.selectedMovieData),
+    dispatch: state.dispatch,
     library: state.library,
-    uiSelectedMovie: state.uiSelectedMovie
+    movies: state.movies.filter(movie => movie.visible),
+    query: state.query
   };
 }
 

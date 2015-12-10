@@ -1,0 +1,21 @@
+:root {
+  --color-white-0: #fafafa;
+  --color-white-1: #eee;
+  --color-gray-1: #ccc;
+  --color-gray-2: #444;
+  --color-yellow-0: #fcf0c5;
+  --color-blue-0: #e4f6f2;
+  --color-blue-1: #abe7d8;
+  --color-blue-2: #84dcc6;
+  --color-blue-3: #4DAAA7;
+  --color-orange-0: #FFE7C6;
+  --color-orange-1: #FFA726;
+  --color-orange-2: #FF8F12;
+  --color-orange-3: #de7500;
+  --color-violet: #193A54;
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.movieList {
+  background-color: var(--color-white-1);
+}

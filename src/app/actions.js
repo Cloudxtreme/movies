@@ -1,55 +1,49 @@
 import fetch from 'isomorphic-fetch';
 
-export const SELECT_MOVIE = 'SELECT_MOVIE';
-export const DESELECT_MOVIE = 'DESELECT_MOVIE';
-export const REQUEST_MOVIE = 'REQUEST_MOVIE';
-export const RECEIVE_MOVIE = 'RECEIVE_MOVIE';
-export const SAVE_MOVIE = 'SAVE_MOVIE';
+// 3. Drag to favorite
+// 4. Click to favorite
+// 5. LocalStorage
+// 6. Service Worker
 
-export function selectMovie(movie) {
+export const SEARCH = 'SEARCH';
+export const REQUEST = 'REQUEST';
+export const RECEIVE = 'RECEIVE';
+export const SAVE = 'SAVE';
+
+export function search(query) {
   return {
-    type: SELECT_MOVIE,
+    type: SEARCH,
+    payload: { query: query },
+    error: false
+  }
+}
+export function request(movie) {
+  return {
+    type: REQUEST,
     payload: { movie: movie },
     error: false
   }
 }
-export function deselectMovie(movie) {
+export function receive(movie, json) {
   return {
-    type: DESELECT_MOVIE,
+    type: RECEIVE,
+    payload: { movie: movie, json: json },
+    error: false
+  }
+}
+export function save(movie) {
+  return {
+    type: SAVE,
     payload: { movie: movie },
     error: false
   }
 }
-export function requestMovie(movie) {
-  return {
-    type: REQUEST_MOVIE,
-    payload: { movie: movie },
-    error: false
-  }
-}
-export function receiveMovie(movie, json) {
-  return {
-    type: RECEIVE_MOVIE,
-    payload: {
-      movie: movie,
-      json: json
-    },
-    error: false
-  }
-}
-export function fetchMovie(movie) {
+export function get(movie) {
   return function(dispatch) {
-    dispatch(requestMovie(movie))
+    dispatch(request(movie))
     const encodedMovie = encodeURIComponent(movie);
-    return fetch(`http://www.omdbapi.com/?t=${encodedMovie}`)
+    return fetch(`http://www.omdbapi.com/?s=${encodedMovie}`)
            .then(response => response.json())
-           .then(json => dispatch(receiveMovie(movie, json)));
-  }
-}
-export function saveMovie(movie) {
-  return {
-    type: SAVE_MOVIE,
-    payload: { movie: movie },
-    error: false
+           .then(json => dispatch(receive(movie, json)));
   }
 }

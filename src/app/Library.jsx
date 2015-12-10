@@ -7,7 +7,7 @@ export default class Library extends Component {
       <section>
         {library.length > 0 && <h2>Your Library</h2>}
         <ul>
-          {library.map(movie => <li>{movie}</li>)}
+          {library.map((movie, i) => <li key={i}>{movie['Title']}</li>)}
         </ul>
       </section>
     );
