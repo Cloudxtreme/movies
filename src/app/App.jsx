@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { selectMovie, fetchMovie } from './actions';
+import { selectMovie, deselectMovie, fetchMovie, saveMovie } from './actions';
 import MovieSelector from './MovieSelector';
 import MovieData from './MovieData';
-import Playlist from './Playlist';
+import Library from './Library';
 import styles from './app.css';
 
 class App extends Component {
@@ -11,23 +11,14 @@ class App extends Component {
     const { dispatch, selectedMovie } = this.props;
     dispatch(fetchMovie(selectedMovie));
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedMovie !== this.props.selectedMovie) {
-      const { dispatch, selectedMovie } = this.props;
-      dispatch(fetchMovie(selectedMovie));
-    }
-  }
   render() {
-    const { dispatch, selectedMovie, selectedMovieData, playlist } = this.props;
+    const { dispatch, selectedMovie, uiSelectedMovie, selectedMovieData, library } = this.props;
     return (
       <div className={styles.app}>
         <h1>MoviesConnected</h1>
-        <MovieSelector onSelectClick={movie => {
-            dispatch(selectMovie(movie));
-            dispatch(fetchMovie(movie));
-          }} selectedMovie={selectedMovie} />
+        <MovieSelector onChange={movie => dispatch(selectMovie(movie))} onSelectClick={movie => { dispatch(deselectMovie(movie)); dispatch(fetchMovie(movie)); }} onAddClick={movie => dispatch(saveMovie(movie))} selectedMovie={selectedMovie} uiSelectedMovie={uiSelectedMovie} />
         <MovieData selectedMovieData={selectedMovieData} />
-        <Playlist playlist={playlist} />
+        <Library library={library} />
       </div>
     )
   }
@@ -36,14 +27,16 @@ class App extends Component {
 App.PropTypes = {
   selectedMovie: PropTypes.string.isRequired,
   selectedMovieData: PropTypes.string,
-  playlist: PropTypes.array
+  library: PropTypes.array,
+  uiSelectedMovie: PropTypes.string
 };
 
 function select(state) {
   return {
     selectedMovie: state.selectedMovie,
     selectedMovieData: JSON.stringify(state.selectedMovieData),
-    playlist: state.playlist
+    library: state.library,
+    uiSelectedMovie: state.uiSelectedMovie
   };
 }
 

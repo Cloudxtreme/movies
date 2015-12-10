@@ -1,20 +1,27 @@
 import React, { Component, PropTypes } from 'react';
+import styles from './app.css';
 
 export default class MovieSelector extends Component {
+  handleChange(e) {
+    const node = this.refs.input;
+    const nextSelectedMovie = node.value.trim();
+    this.props.onChange(nextSelectedMovie);
+  }
   handleSearch(e) {
     const node = this.refs.input;
     const nextSelectedMovie = node.value.trim();
     this.props.onSelectClick(nextSelectedMovie);
-    node.value = '';
   }
   handleAdd(e) {
-    console.log('Add to Library');
+    const node = this.refs.input;
+    const nextSelectedMovie = node.value.trim();
+    this.props.onAddClick(nextSelectedMovie);
   }
   render() {
     return (
       <div>
-        <h2>Selected Movie: {this.props.selectedMovie}</h2>
-        <input ref='input' placeholder='Movie Name' type='text' />
+        <h2>Selected Movie: <span className={styles.selectedMovie}>{this.props.selectedMovie}</span></h2>
+        <input onChange={e => this.handleChange(e)} ref='input' placeholder='Movie Name' type='text' />
         <button onClick={e => this.handleSearch(e)}>Search</button>
         <button onClick={e => this.handleAdd(e)}>Add to Library</button>
       </div>
@@ -24,5 +31,6 @@ export default class MovieSelector extends Component {
 
 MovieSelector.PropTypes = {
   onSelectClick: PropTypes.func.isRequired,
-  selectedMovie: PropTypes.string.isRequired
+  selectedMovie: PropTypes.string.isRequired,
+  uiSeletedMovie: PropTypes.string.isRequired
 };

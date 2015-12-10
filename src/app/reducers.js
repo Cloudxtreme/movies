@@ -1,4 +1,4 @@
-import { SELECT_MOVIE, REQUEST_MOVIE, RECEIVE_MOVIE, SAVE_MOVIE, selectMovie } from './actions';
+import { SELECT_MOVIE, DESELECT_MOVIE, REQUEST_MOVIE, RECEIVE_MOVIE, SAVE_MOVIE, selectMovie } from './actions';
 import { combineReducers } from 'redux';
 
 const initialState = {
@@ -25,8 +25,18 @@ const initialState = {
       "Type": "movie",
       "Response": "True"
     },
-    playlist: []
+    library: [],
+    uiSelectedMovie: ''
 };
+
+function uiSelectedMovie(state = initialState.uiSelectedMovie, action) {
+  switch(action.type) {
+  case DESELECT_MOVIE:
+    return '';
+  default:
+    return state;
+  }
+}
 
 function selectedMovie(state = initialState.selectedMovie, action) {
   switch(action.type) {
@@ -47,7 +57,7 @@ function selectedMovieData(state = initialState.selectedMovieData, action) {
   }
 }
 
-function playlist(state = initialState.playlist, action) {
+function library(state = initialState.library, action) {
   switch(action.type) {
   case SAVE_MOVIE:
     return [...state, action.payload.movie];
@@ -59,6 +69,7 @@ function playlist(state = initialState.playlist, action) {
 const rootReducer = combineReducers({
   selectedMovie,
   selectedMovieData,
-  playlist
+  library,
+  uiSelectedMovie
 });
 export default rootReducer;

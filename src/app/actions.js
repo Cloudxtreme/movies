@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 
 export const SELECT_MOVIE = 'SELECT_MOVIE';
+export const DESELECT_MOVIE = 'DESELECT_MOVIE';
 export const REQUEST_MOVIE = 'REQUEST_MOVIE';
 export const RECEIVE_MOVIE = 'RECEIVE_MOVIE';
 export const SAVE_MOVIE = 'SAVE_MOVIE';
@@ -8,6 +9,13 @@ export const SAVE_MOVIE = 'SAVE_MOVIE';
 export function selectMovie(movie) {
   return {
     type: SELECT_MOVIE,
+    payload: { movie: movie },
+    error: false
+  }
+}
+export function deselectMovie(movie) {
+  return {
+    type: DESELECT_MOVIE,
     payload: { movie: movie },
     error: false
   }
