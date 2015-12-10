@@ -265,3 +265,13 @@ input[type=submit]:active {
 .selectedMovie {
   color: var(--color-blue-3);
 }
+.selectedInput {
+  display: block;
+  width: 100%;
+}
+@media (min-width: 35em) {
+  .selectedInput {
+    display: inline-block;
+    width: auto;
+  }
+}

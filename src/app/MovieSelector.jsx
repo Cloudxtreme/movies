@@ -21,9 +21,9 @@ export default class MovieSelector extends Component {
     return (
       <div>
         <h2>Selected Movie: <span className={styles.selectedMovie}>{this.props.selectedMovie}</span></h2>
-        <input onChange={e => this.handleChange(e)} ref='input' placeholder='Movie Name' type='text' />
-        <button onClick={e => this.handleSearch(e)}>Search</button>
-        <button onClick={e => this.handleAdd(e)}>Add to Library</button>
+        <input className={styles.selectedInput} onChange={e => this.handleChange(e)} ref='input' placeholder='Movie Name' type='text' />
+        <button className={styles.selectedInput} onClick={e => this.handleSearch(e)}>Search</button>
+        <button className={styles.selectedInput} onClick={e => this.handleAdd(e)}>Add to Library</button>
       </div>
     )
   }
