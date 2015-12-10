@@ -13,7 +13,7 @@ let config = {
 
   module: {
     loaders: [
-      { test: /\.jsx$/, loader: 'babel-loader', include: path.join(__dirname, 'src') },
+      { test: /\.jsx?$/, loader: 'babel-loader', include: path.join(__dirname, 'src') },
       { test: /\.css$/, loader: ExtractTextPlugin.extract('style', 'css?module&importLoaders=1&localIdentName=[name]__[hash:base64:5]!postcss') }
     ]
   }

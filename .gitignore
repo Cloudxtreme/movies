@@ -20,3 +20,4 @@
 !/dist/robots.txt
 !/dist/humans.txt
 !/dist/service-worker.js
+!/dist/fallback.png
