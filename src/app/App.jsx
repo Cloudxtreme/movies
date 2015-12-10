@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { search, get, save } from './actions';
+import { search, get, saveAtIndex } from './actions';
 
 import Searchbar from './Searchbar';
 import MovieList from './MovieList';
@@ -19,9 +19,8 @@ class App extends Component {
         <h1>Movie Management<br /><strong>Simplified</strong></h1>
         <Searchbar onChange={movie => dispatch(search(movie))}
                    onGet={movie => dispatch(get(movie))}
-                   onSave={movie => dispatch(save(movie))}
                    query={query} />
-        <MovieList movies={movies} />
+        <MovieList movies={movies} onSave={index => dispatch(saveAtIndex(index))} />
         <Library library={library} />
       </div>
     )

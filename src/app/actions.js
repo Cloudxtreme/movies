@@ -38,6 +38,17 @@ export function save(movie) {
     error: false
   }
 }
+export function saveAtIndex(index) {
+  return function(dispatch, getState) {
+    const movies = getState().movies;
+    const movie = movies[index];
+    if (movie) {
+      dispatch(save(movie));
+      return movie;
+    }
+    throw new Error('Movie not found.');
+  }
+}
 export function get(movie) {
   return function(dispatch) {
     dispatch(request(movie))

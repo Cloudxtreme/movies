@@ -10,11 +10,6 @@ export default class Searchbar extends Component {
     const movie = node.value.trim();
     this.props.onGet(movie);
   }
-  handleSave(e) {
-    const node = this.refs.input;
-    const movie = node.value.trim();
-    this.props.onSave(movie);
-  }
   render() {
     const { query } = this.props;
     return (
@@ -26,10 +21,7 @@ export default class Searchbar extends Component {
                ref='input'
                type='text'
                value={query} />
-        <button className={styles.get}
-                onClick={e => this.handleGet(e)}>Search</button>
-        <button className={styles.save}
-                onClick={e => this.handleSave(e)}>Add to Library</button>
+        <button className={styles.get} onClick={e => this.handleGet(e)}>Search</button>
       </div>
     )
   }

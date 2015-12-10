@@ -13,9 +13,6 @@
 .get {
   composes: button;
 }
-.save {
-  composes: button;
-}
 @media (min-width: 30em) {
   .searchbar {
     flex-wrap: nowrap;
@@ -24,7 +21,7 @@
     flex: 0 1 70%;
   }
   .button {
-    margin-left: 10px;
+    margin-left: 5px;
     flex: 0 1 30%;
   }
 }
