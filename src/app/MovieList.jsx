@@ -7,7 +7,7 @@ export default class MovieList extends Component {
       <section>
         {movies.length > 0 && <h2>Search Results</h2>}
         <ul>
-          {movies.map(movie => <li>{movie}</li>)}
+          {movies.map((movie, i) => <li key={i}>{movie['Title']}</li>)}
         </ul>
       </section>
     )
@@ -15,5 +15,5 @@ export default class MovieList extends Component {
 }
 
 MovieList.PropTypes = {
-  movies: PropTypes.string
+  movies: PropTypes.array.isRequired
 };

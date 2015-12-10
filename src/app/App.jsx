@@ -13,17 +13,17 @@ class App extends Component {
     dispatch(get(query));
   }
   render() {
-    const { dispatch, firstMovie, library, movies, query } = this.props;
+    const { dispatch, firstMovie, library, movies, title, query } = this.props;
     return (
       <div className={styles.app}>
         <h1>MoviesConnected</h1>
         <h2>
           Selected Movie:
-          <span className={styles.query}>{firstMovie}</span>
+          <span className={styles.query}>{title}</span>
         </h2>
-        <Searchbar onSave={movie => dispatch(save(movie))}
-                   onChange={movie => dispatch(search(movie))}
+        <Searchbar onChange={movie => dispatch(search(movie))}
                    onGet={movie => dispatch(get(movie))}
+                   onSave={movie => dispatch(save(movie))}
                    query={query} />
         <MovieList movies={movies} />
         <Library library={library} />
@@ -37,15 +37,16 @@ App.PropTypes = {
   firstMovie: PropTypes.object,
   library: PropTypes.array,
   movies: PropTypes.array,
+  title: PropTypes.string,
   query: PropTypes.string.isRequired
 };
 
 function select(state) {
   return {
     dispatch: state.dispatch,
-    firstMovie: state.movies.filter(movie => movie.visible)[0],
     library: state.library,
     movies: state.movies.filter(movie => movie.visible),
+    title: (state.movies.filter(movie => movie.visible)[0] || {'Title': ''})['Title'],
     query: state.query
   };
 }

@@ -13,10 +13,10 @@ export const REQUEST = 'REQUEST';
 export const RECEIVE = 'RECEIVE';
 export const SAVE = 'SAVE';
 
-export function search(movie) {
+export function search(query) {
   return {
     type: SEARCH,
-    payload: { movie: movie },
+    payload: { query: query },
     error: false
   }
 }

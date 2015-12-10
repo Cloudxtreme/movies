@@ -16,14 +16,15 @@ export default class MovieSelector extends Component {
     this.props.onSave(movie);
   }
   render() {
+    const { query } = this.props;
     return (
       <div>
         <input className={styles.input}
                onChange={e => this.handleChange(e)}
-               ref='input'
                placeholder='Movie Name'
+               ref='input'
                type='text'
-               value={this.props.query} />
+               value={query} />
         <button className={styles.input}
                 onClick={e => this.handleGet(e)}>Search</button>
         <button className={styles.input}
@@ -37,5 +38,5 @@ MovieSelector.PropTypes = {
   onChange: PropTypes.func.isRequired,
   onGet: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
-  query: PropTypes.string
+  query: PropTypes.string.isRequired
 };

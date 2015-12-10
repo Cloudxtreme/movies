@@ -1,4 +1,4 @@
-import { QUERY, REQUEST, RECEIVE, SAVE } from './actions';
+import { SEARCH, REQUEST, RECEIVE, SAVE } from './actions';
 import { combineReducers } from 'redux';
 
 /*
@@ -23,7 +23,7 @@ const initialState = {
 
 function query(state = initialState.query, action) {
   switch(action.type) {
-  case QUERY:
+  case SEARCH:
     return action.payload.query;
   default:
     return state;
@@ -33,8 +33,12 @@ function query(state = initialState.query, action) {
 function movies(state = initialState.movies, action) {
   switch(action.type) {
   case REQUEST:
+    return state;
   case RECEIVE:
-    return Object.assign({}, action.payload.json);
+    if (!action.payload.json['Search']) return [];
+    const foo = [...action.payload.json['Search'].map(movie => Object.assign({}, movie, { visible: true }))];
+    console.log(foo);
+    return foo;
   default:
     return state;
   }
