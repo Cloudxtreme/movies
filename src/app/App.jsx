@@ -13,14 +13,10 @@ class App extends Component {
     dispatch(get(query));
   }
   render() {
-    const { dispatch, firstMovie, library, movies, title, query } = this.props;
+    const { dispatch, firstMovie, library, movies, query } = this.props;
     return (
       <div className={styles.app}>
-        <h1>MoviesConnected</h1>
-        <h2>
-          Selected Movie:
-          <span className={styles.query}>{title}</span>
-        </h2>
+        <h1>Movie Management<br /><strong>Simplified</strong></h1>
         <Searchbar onChange={movie => dispatch(search(movie))}
                    onGet={movie => dispatch(get(movie))}
                    onSave={movie => dispatch(save(movie))}
@@ -37,7 +33,6 @@ App.PropTypes = {
   firstMovie: PropTypes.object,
   library: PropTypes.array,
   movies: PropTypes.array,
-  title: PropTypes.string,
   query: PropTypes.string.isRequired
 };
 
@@ -46,7 +41,6 @@ function select(state) {
     dispatch: state.dispatch,
     library: state.library,
     movies: state.movies.filter(movie => movie.visible),
-    title: (state.movies.filter(movie => movie.visible)[0] || {'Title': ''})['Title'],
     query: state.query
   };
 }

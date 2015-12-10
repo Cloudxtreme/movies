@@ -1,8 +1,5 @@
 import fetch from 'isomorphic-fetch';
 
-// 0. Display proper title
-// 1. Rename state
-// 2. Use ?s= to display list
 // 3. Drag to favorite
 // 4. Click to favorite
 // 5. LocalStorage

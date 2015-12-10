@@ -1,0 +1,17 @@
+.searchbar {
+  display: flex;
+  justify-content: space-between;
+}
+.input {
+  flex: 0 1 70%;
+}
+.button {
+  margin-left: 10px;
+  flex: 0 1 30%;
+}
+.get {
+  composes: button;
+}
+.save {
+  composes: button;
+}

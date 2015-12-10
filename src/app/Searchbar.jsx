@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import styles from './app.css';
+import styles from './Searchbar.css';
 
-export default class MovieSelector extends Component {
+export default class Searchbar extends Component {
   handleChange(e) {
     this.props.onChange(e.target.value);
   }
@@ -18,23 +18,24 @@ export default class MovieSelector extends Component {
   render() {
     const { query } = this.props;
     return (
-      <div>
-        <input className={styles.input}
+      <div className={styles.searchbar}>
+        <input autoFocus
+               className={styles.input}
                onChange={e => this.handleChange(e)}
                placeholder='Movie Name'
                ref='input'
                type='text'
                value={query} />
-        <button className={styles.input}
+        <button className={styles.get}
                 onClick={e => this.handleGet(e)}>Search</button>
-        <button className={styles.input}
+        <button className={styles.save}
                 onClick={e => this.handleSave(e)}>Add to Library</button>
       </div>
     )
   }
 }
 
-MovieSelector.PropTypes = {
+Searchbar.PropTypes = {
   onChange: PropTypes.func.isRequired,
   onGet: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
