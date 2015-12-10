@@ -27,10 +27,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
 h1 {
-  font-size: 5rem;
+  font-size: 4rem;
   font-weight: 200;
   text-align: center;
   text-transform: uppercase;
+}
+@media (min-width: 30em) {
+  h1 { font-size: 5rem; }
 }
 h2 {
   font-size: 2rem;
@@ -254,9 +257,15 @@ input[type=submit]:active {
 
 .app {
   margin: 0 auto;
-  max-width: 49rem;
-  padding: 4rem 3.5rem 4.25rem 3.5rem;
+  max-width: 100%;
+  padding: 3rem 2rem 3.25rem 2rem;
   position: relative;
   z-index: 1;
+}
+@media (min-width: 30em) {
+  .app {
+    max-width: 49rem;
+    padding: 4rem 3.5rem 4.25rem 3.5rem;
+  }
 }
 .app section { margin-top: 2.5rem; }
