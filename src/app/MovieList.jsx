@@ -9,6 +9,7 @@ export default class MovieList extends Component {
     const { movies } = this.props;
     return (
       <section>
+        {movies.length === 0 && <h2>No search results found.</h2>}
         {movies.length > 0 && <h2>Search Results</h2>}
         <ul className={styles.list}>
           {movies.map((movie, index) =>

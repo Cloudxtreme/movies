@@ -6,14 +6,16 @@ export default class Searchbar extends Component {
     this.props.onChange(e.target.value);
   }
   handleGet(e) {
+    e.preventDefault();
     const node = this.refs.input;
     const movie = node.value.trim();
+    console.log(e, node, movie);
     this.props.onGet(movie);
   }
   render() {
     const { query } = this.props;
     return (
-      <div className={styles.searchbar}>
+      <form className={styles.searchbar} onSubmit={e => this.handleGet(e)}>
         <input autoFocus
                className={styles.input}
                onChange={e => this.handleChange(e)}
@@ -22,7 +24,7 @@ export default class Searchbar extends Component {
                type='text'
                value={query} />
         <button className={styles.get} onClick={e => this.handleGet(e)}>Search</button>
-      </div>
+      </form>
     )
   }
 }
