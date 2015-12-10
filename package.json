@@ -53,7 +53,8 @@
   "scripts": {
     "build": "NODE_ENV=production babel-node ./node_modules/.bin/webpack",
     "start": "NODE_ENV=development babel-node $(npm bin)/webpack-dev-server",
-    "test": "mocha --require ./test/test-init --compilers js:babel-core/register --recursive"
+    "test": "mocha --require ./test/test-init --compilers js:babel-core/register --recursive",
+    "deploy": "cd dist && aws s3 sync . s3://smockle-movies --acl public-read"
   },
   "repository": {
     "type": "git",
